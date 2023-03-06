@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: brown;
+}
+
+body{
+    background-color: black;
+}
+
+#panel_Div{
+    border: solid 1px whitesmoke;
+    max-width: 500px;
+    height: 300px;
+    margin: 30px auto;
+    display: flex;
+}
+
+#panelCol_Div1{
+
+}
+
+#panelColRow_Div0-2{
+
+}
+
+.panelColRow_Div:hover{
+    background-color: cyan;
+}
