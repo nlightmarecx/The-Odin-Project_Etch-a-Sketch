@@ -1,29 +1,80 @@
+@font-face{
+    font-family: lacquer;
+    src: url(Fonts/Lacquer-Regular.ttf);
+}
+
 *{
+    /*box-sizing: border-box;*/
     margin: 0;
     padding: 0;
-    color: brown;
+    color: white;
+    font-family: lacquer, 'Times New Roman', Times, serif
 }
 
 body{
     background-color: black;
-}
-
-#panel_Div{
-    border: solid 1px whitesmoke;
-    max-width: 500px;
-    height: 300px;
-    margin: 30px auto;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
 }
 
-#panelCol_Div1{
-
+#headerTitle{
+    color: white;
+    font-family: lacquer;
+    font-size: 44px;
+    font-weight: bold;
+    text-shadow: 0 0 10px cyan;
+    text-align: center;
+    margin: 30px;
 }
 
-#panelColRow_Div0-2{
-
+main{
+    width: 400px;
+    margin: 0 auto;
 }
 
-.panelColRow_Div:hover{
-    background-color: cyan;
+#centering_Div{
+    display: flex;
+    justify-content: space-around;
+}
+
+    #panel_Div{
+        display: flex;
+        background-color: rgba(169, 169, 169, 0.05);      
+        border-radius: 3%;
+        border: solid 1px rgba(0, 255, 255, 0.65);
+        box-shadow: 0 0 7.5px 3px royalblue;  
+        margin: auto 0;
+    }
+
+    #tools_Div{
+        color: white;
+        font-size: 10px;
+        background-color: rgba(65, 105, 225, 0.2);
+        border-radius: 5%;
+        padding: 10px 5px;
+        margin: auto 0;
+        user-select: none;
+    }      
+        
+        .tools{
+            text-align: center;
+            border: double 1px rgba(0, 255, 255, 0.65);
+            border-radius: 3px;
+            margin: 5px 0;
+            padding: 5px 10px;
+            
+        }
+
+        .tools:hover{
+           cursor: pointer; 
+        }
+        /*.panelColRow_Div:hover{
+            background-color: cyan;
+        }*/
+
+#colorBar_Div{
+    height: 75px;
 }
