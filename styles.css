@@ -21,11 +21,11 @@ body{
 }
 
 #headerTitle{
-    color: white;
+    color: rgb(0, 24, 32);
     font-family: lacquer;
-    font-size: 44px;
+    font-size: 48px;
     font-weight: bold;
-    text-shadow: 0 0 10px cyan;
+    text-shadow: 0 0 1px cyan, 0 0 22px royalblue;
     text-align: center;
     margin: 40px;
 }
@@ -49,6 +49,10 @@ main{
         margin: auto 0;
     }
 
+        .paint{
+            background-color: blue;
+        }
+
         .ghostHover{
 
         }
@@ -56,20 +60,23 @@ main{
     #tools_Div{
         color: white;
         font-size: 16px;
-        background-color: rgba(65, 105, 225, 0.18);
+        background-image: radial-gradient(
+            rgba(0, 255, 255, 0.1),
+            rgba(65, 155, 255, 0.4)
+        );
         border-radius: 5%;
         padding: 18px 12px;
         margin: auto 0;
         user-select: none;
-        box-shadow: 0 0 10px rgba(0, 0, 255, 0.35) inset;
+        box-shadow: 0 0 8px cyan inset;
     }      
         
         .tools{
             text-align: center;
             border: double 1px rgba(0, 255, 255, 0.65);
             background-image: radial-gradient(
-                rgba(0, 255, 255, 0.15),
-                rgba(0, 255, 255, 0.44)
+                rgba(65, 105, 225, 0.12),
+                rgba(65, 105, 225, 0.44)
             );
             border-radius: 3px;
             margin: 5px 0;
@@ -81,26 +88,27 @@ main{
 
         .tools:hover{
            cursor: pointer; 
-           box-shadow: 0 0 7px, 0 0 15px cyan inset;
+           box-shadow: 0 0 7px, 0 0 15px royalblue inset;
            background-image: radial-gradient(
                 rgba(0, 255, 255, 0.35),
                 rgba(0, 255, 255, 0.60)
             );
             scale: 1.02;
+            transition: box-shadow 0.15s;
         }
 
-        #inkColor {
+        #inkColor{
             border: none;
             border-radius: 15%;
             width: 25px;
             height: 20px;
         }
          
-        #inkColor::-webkit-color-swatch {
+        #inkColor::-webkit-color-swatch{
 
         }
 
-        #inkColor::-webkit-color-swatch-wrapper {
+        #inkColor::-webkit-color-swatch-wrapper{
             padding: 0; 
         }
         

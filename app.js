@@ -20,6 +20,8 @@ let SIZE_SQUARE_Y = PANEL_HEIGHT/SIZE_BOARD_Y-SIZE_BORDER;
 panel_Div.style.gridTemplateColumns = `repeat(${SIZE_BOARD_X}, 1fr)`;
 panel_Div.style.gridTemplateRows = `repeat(${SIZE_BOARD_Y}, 1fr)`;
 
+mouseIsUp = false;
+
 //END OF Panel DIV
 //................................................
 
@@ -75,7 +77,7 @@ bottomRightCorner.style.borderRadius = "0 0 20% 0";
 bottomLeftCorner.style.borderRadius = "0 0 0 20%";
 
 //....................................................GHOST HOVER + DRAW ON MOUSE DOWN
-
+/*
 $('.panelColRow_Div').on({
     mousedown: function(){
         $('.panelColRow_Div').hover(function(){
@@ -88,10 +90,34 @@ $('.panelColRow_Div').on({
         });
     }
 })
+*/
+/*
+panel_Div.addEventListener('mousedown', function(){
+    $('.panelColRow_Div').hover(function(){
+        //$(this).addClass('paint');
+        $(this).css("background-color", currentInkColor);
+    });
+});
+panel_Div.addEventListener('mouseup', function(){
+    $('.panelColRow_Div').stop();
+
+});
+*/
+
+$("h1").mousedown(function(){
+    $("#centering_Div").slideUp(5000);
+});
+$("h1").mouseup(function(){
+    $("#centering_Div").stop();
+});
+
+
+
+
+
 
 
 /*
-
 panelSquare_Div.addEventListener('mouseover', ghostHover)
 ghostHover();
 function ghostHover(e){
@@ -112,6 +138,21 @@ $('.panelColRow_Div').css({"borderLeft": `solid ${SIZE_BORDER}px ${COLOR_BORDER}
 "borderTop": `solid ${SIZE_BORDER}px ${COLOR_BORDER}`, "borderRight": "none", "borderBottom": "none"});
 $('.panelColRow_Div').css({"height": SIZE_SQUARE_X+"px", "width":
 SIZE_SQUARE_Y+"px"});
+
+//....................................................CSS TOOLS ARE CLICKED
+$('.tools').mousedown(function(){
+    $(this).css({'scale': '1', 'box-shadow': '0 0 7px, 0 0 20px cyan inset'});   
+})
+$('.tools').mouseup(function(){
+    $(this).css({'scale': '1.02', 'box-shadow': '0 0 7px, 0 0 15px royalblue inset'});
+})
+$('.tools').mouseenter(function(){
+    $(this).css({'scale': '1', 'box-shadow': '0 0 7px, 0 0 15px royalblue inset'});
+})
+$('.tools').mouseleave(function(){
+    $(this).css({'scale': '1', 'box-shadow': 'none'});
+})
+
 
 //....................................................INK COLOR
 $('#ink_Div').click(function(){ 
@@ -151,12 +192,11 @@ $('#clearBoard_Div').click(function(){
     $('.panelColRow_Div').css("background-color", "black");
 })
 
-//....................................................TURN GRID LINES OFF
+//....................................................TURN GRID LINES OFF/ON
 $('#gridLinesOff_Div').click(function(){ 
     removeGridLines(0)
 })
 
-//....................................................TURN GRID LINES ON
 $('#gridLinesOn_Div').click(function(){
     removeGridLines(1)
 }) 
@@ -170,3 +210,5 @@ function removeGridLines(x){
     $('.panelColRow_Div').css({"height": `${SIZE_SQUARE_X}px`, "width":
     `${SIZE_SQUARE_Y}px`});
 }
+
+//....................................................SOMETHING ELSE
