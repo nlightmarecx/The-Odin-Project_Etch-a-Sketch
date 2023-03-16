@@ -1,5 +1,5 @@
 const panel_Div = document.getElementById("panel_Div");
-const panelSquare_Div = document.getElementsByClassName("panelColRow_Div");
+const panelColRow_Div = document.getElementsByClassName("panelColRow_Div");
 
 const PANEL_WIDTH = 300;
 const PANEL_HEIGHT = PANEL_WIDTH*2;
@@ -9,7 +9,7 @@ const panelHeight = document.getElementById("panel_Div").style.height = PANEL_HE
 const toolsWidth = document.getElementById("tools_Div").style.width = PANEL_WIDTH/1.6+"px";
 
 
-let SIZE_BOARD_X = 8;
+let SIZE_BOARD_X = 10;
 let SIZE_BOARD_Y = SIZE_BOARD_X*2;
 let COLOR_BORDER = "rgba(211, 211, 211, 0.25)";
 let SIZE_BORDER = 1;
@@ -19,8 +19,6 @@ let SIZE_SQUARE_Y = PANEL_HEIGHT/SIZE_BOARD_Y-SIZE_BORDER;
 
 panel_Div.style.gridTemplateColumns = `repeat(${SIZE_BOARD_X}, 1fr)`;
 panel_Div.style.gridTemplateRows = `repeat(${SIZE_BOARD_Y}, 1fr)`;
-
-mouseIsUp = false;
 
 //END OF Panel DIV
 //................................................
@@ -45,38 +43,19 @@ function createBoard(){
     }
 }
 
-/*
-function createBoard(){
-    for(let i=0; i<SIZE_BOARD_X; i++){
-        const panelCol_Div = document.createElement("div");
-        //panel_Div.appendChild(panelCol_Div); //DOM method
-        $('#panel_Div').append(panelCol_Div); //jQuery method
-        panelCol_Div.setAttribute("id", "panelCol_Div"+i);
-
-        for(let j=0; j<SIZE_BOARD_Y; j++){
-            const panelColRow_Div = document.createElement("div");
-            panelCol_Div.appendChild(panelColRow_Div);
-
-            panelColRow_Div.setAttribute("id", "panelColRow_Div"+i+"-"+j)
-            panelColRow_Div.setAttribute("class", "panelColRow_Div")
-        }
-    }
-}
-
-*/
-
 //....................................................ROUND THE CORNERS
 const topLeftCorner = document.getElementById("panelColRow_Div0");
 const topRightCorner = document.getElementById("panelColRow_Div"+(SIZE_BOARD_X-1));
 const bottomRightCorner = document.getElementById("panelColRow_Div"+(SIZE_BOARD_X*SIZE_BOARD_Y-1));
 const bottomLeftCorner = document.getElementById("panelColRow_Div"+(SIZE_BOARD_X*SIZE_BOARD_Y-SIZE_BOARD_X));
 
-topLeftCorner.style.borderRadius = "20% 0 0 0";
-topRightCorner.style.borderRadius = "0 20% 0 0";
-bottomRightCorner.style.borderRadius = "0 0 20% 0";
-bottomLeftCorner.style.borderRadius = "0 0 0 20%";
+topLeftCorner.style.borderRadius = "40% 0 0 0";
+topRightCorner.style.borderRadius = "0 40% 0 0";
+bottomRightCorner.style.borderRadius = "0 0 40% 0";
+bottomLeftCorner.style.borderRadius = "0 0 0 40%";
 
-//....................................................GHOST HOVER + DRAW ON MOUSE DOWN
+//....................................................DRAW ON MOUSE DOWN
+
 /*
 $('.panelColRow_Div').on({
     mousedown: function(){
@@ -91,6 +70,7 @@ $('.panelColRow_Div').on({
     }
 })
 */
+
 /*
 panel_Div.addEventListener('mousedown', function(){
     $('.panelColRow_Div').hover(function(){
@@ -99,18 +79,72 @@ panel_Div.addEventListener('mousedown', function(){
     });
 });
 panel_Div.addEventListener('mouseup', function(){
-    $('.panelColRow_Div').stop();
-
+    $('.panelColRow_Div').hover(function(){
+        //$(this).addClass('paint');
+        $(this).css("background-color", "red");
+    });
 });
 */
 
+panel_Div.addEventListener('mousedown', function(){
+    $('.panelColRow_Div').hover(function(e){
+        let squareBox = e.target;
+        squareBox.style.backgroundColor = currentInkColor;
+    });
+});
+panel_Div.addEventListener('mouseup', function(){
+    $('.panelColRow_Div').hover(function(e){
+        let squareBox = e.target;
+        squareBox.style.backgroundColor = "brown";
+    });
+});
+
+/*
+let mouseIsUp = true;
+
+panel_Div.addEventListener('mousedown', booleanOff);
+function booleanOff(e){
+    let squareBox = e.target;
+    mouseIsUp = false;  
+    $('h1').css("background-color", currentInkColor);
+    paint();
+    squareBox.style.backgroundColor = "green";
+    console.log(squareBox)
+}
+
+panel_Div.addEventListener('mouseup', booleanOn);
+function booleanOn(){
+    mouseIsUp = true; 
+    $('h1').css("background-color", "red");
+    paint();
+}
+
+function paint(){
+    if(mouseIsUp === false){
+        $('.panelColRow_Div').hover(function(){
+            //$(this).addClass('paint');
+            $(this).css("background-color", currentInkColor);
+        });
+    }
+    if(mouseIsUp === true){
+        $('.panelColRow_Div').hover(function(){
+            //$(this).addClass('paint');
+            $(this).css("background-color", "transparent");
+        });
+    }
+};
+*/
+
+
+
+/*
 $("h1").mousedown(function(){
     $("#centering_Div").slideUp(5000);
 });
 $("h1").mouseup(function(){
     $("#centering_Div").stop();
 });
-
+*/
 
 
 
@@ -118,7 +152,8 @@ $("h1").mouseup(function(){
 
 
 /*
-panelSquare_Div.addEventListener('mouseover', ghostHover)
+//....................................................GHOST HOVER
+panelColRow_Div.addEventListener('mouseover', ghostHover)
 ghostHover();
 function ghostHover(e){
     e.target.classList.add('hover');
@@ -139,7 +174,7 @@ $('.panelColRow_Div').css({"borderLeft": `solid ${SIZE_BORDER}px ${COLOR_BORDER}
 $('.panelColRow_Div').css({"height": SIZE_SQUARE_X+"px", "width":
 SIZE_SQUARE_Y+"px"});
 
-//....................................................CSS TOOLS ARE CLICKED
+//....................................................CSS TOOL BUTTONS ARE CLICKED
 $('.tools').mousedown(function(){
     $(this).css({'scale': '1', 'box-shadow': '0 0 7px, 0 0 20px cyan inset'});   
 })
@@ -152,7 +187,6 @@ $('.tools').mouseenter(function(){
 $('.tools').mouseleave(function(){
     $(this).css({'scale': '1', 'box-shadow': 'none'});
 })
-
 
 //....................................................INK COLOR
 $('#ink_Div').click(function(){ 
