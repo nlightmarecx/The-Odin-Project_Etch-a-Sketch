@@ -19,12 +19,12 @@
 
             </div>
             <div id="tools_Div">
-                <div id="ink_Div" class="tools">
+                <div id="ink_Div" class="tools" onclick="setColor('initialInk')">
                     <p id="ink">Ink Color</p>
                     <input type="color" id="inkColor" class="toolIcon">
                 </div>
 
-                <div id="rainbow_Div" class="tools">
+                <div id="rainbow_Div" class="tools" onclick="setColor('rainbow')">
                     <p id="rainbow">Rainbow Color</p>
                 </div>
 
@@ -40,24 +40,21 @@
                     <p id="bucket">Bucket</p>
                 </div>
 
-                <div id="rubber_Div" class="tools">
-                    <p id="rubber">Rubber</p>
-                </div>
-
                 <div id="boardColor_Div" class="tools">
                     <p id="boardColor">Board Color</p>
                 </div>
 
-                <div id="boardSize_Div" class="tools">
-                    <p id="boardColor">Board Size</p>
+                <div id="gridLinesOn_Div" class="tools" onclick="turnGrLnsOnOff()">
+                    <p id="gridLinesOn">Grid Lines: <span id="gridLinesOn-Off">On</span></p>
                 </div>
 
-                <div id="gridLinesOn_Div" class="tools">
-                    <p id="gridLinesOn">Grid Lines On</p>
+                <div id="boardSize_Div" class="">
+                    <p id="boardSizeLabel_text">Board Size<span id="boardSizeLabel_Num">: 10 x 20</span></p>
+                    <input id="boardSizeSlider" type="range" value="12" min="3" max="32"/>
                 </div>
 
-                <div id="gridLinesOff_Div" class="tools">
-                    <p id="gridLinesOff">Grid Lines Off</p>
+                <div id="rubber_Div" class="tools" onclick="setColor('rubber')">
+                    <p id="rubber">Rubber</p>
                 </div>
 
                 <div id="clearBoard_Div" class="tools">
@@ -65,10 +62,6 @@
                 </div>
             </div>
         </div>
-        <div id="colorBar_Div">
-
-        </div>
-    
     </main>
 </body>
 </html>
