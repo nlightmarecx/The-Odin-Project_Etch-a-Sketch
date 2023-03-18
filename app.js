@@ -31,6 +31,8 @@ const inkColor = document.getElementById("inkColor");
 const gridLinesOff = document.getElementById("#gridLinesOff");
 
 let currentInkColor = "#0000ff";
+let gridLinesOn = true;
+let boardColorOn = true;
 
 //......................Canvas Panel..............................
 //....................................................MAKE BOARD DIVs
@@ -50,6 +52,7 @@ function createBoard(size){
         panel_Div.insertAdjacentElement("beforeend", divSquare);
         divSquare.addEventListener('mouseover', colorDiv);
     }
+    removeGridLines();
 }
 
 //....................................................ROUND THE CORNERS
@@ -182,15 +185,15 @@ $('.tools').mouseup(function(){
     $(this).css({'scale': '1.02', 'box-shadow': '0 0 7px, 0 0 15px royalblue inset'});
 })
 $('.tools').mouseenter(function(){
-    $(this).css({'scale': '1', 'box-shadow': '0 0 7px, 0 0 15px royalblue inset'});
+    $(this).css({'scale': '1.02', 'box-shadow': '0 0 7px, 0 0 15px royalblue inset'});
 })
 $('.tools').mouseleave(function(){
     $(this).css({'scale': '1', 'box-shadow': 'none'});
 })
 
 //....................................................CHOOSE INK COLOR FUNCTION
-let initialInk = "#ffff00";
-let rubberInk = "#000000"
+let initialInk = "#0000ff";
+let rubberInk = "var(--boardBlue)";
 
 function colorDiv(){
     if(currentInkColor === 'rainbow'){
@@ -209,7 +212,7 @@ function setColor(chooseInk){
     currentInkColor = chooseInk;
 }
 
-//....................................................INITIAL INK COLOR BTN
+//....................................................INK COLOR
 $('#ink_Div').click(function(){ 
     $('.divSquare').hover(function(){
         $(this).css("background-color", currentInkColor);
@@ -224,24 +227,65 @@ function changeInkColor(e){
 //....................................................RAINBOW COLOR
 
 
+
+//....................................................BUCKET
+$('#bucket_Div').mousedown(function(){
+    $(this).css({'scale': '1', 'box-shadow': 'none'});   
+})
+$('#bucket_Div').mouseup(function(){
+    $(this).css({'scale': '1', 'box-shadow': 'none'});
+})
+$('#bucket_Div').mouseenter(function(){
+    $(this).css({'scale': '1', 'box-shadow': 'none'});
+})
+$('#bucket_Div').mouseleave(function(){
+    $(this).css({'scale': '1', 'box-shadow': 'none'});
+})
+
+//....................................................CHANGE BOARD COLOR
+function changeBoardColor(){
+    if(boardColorOn === true){
+        $("#boardColor_Div").css({
+            "background-image": "var(--boardBlack)"});
+        $("#panel_Div").css({
+            "background-image": "none"});
+        $("#panel_Div").css({
+            "background-color": "rgb(0, 10, 15)"});
+        boardColorOn = false;
+    }else{
+        $("#boardColor_Div").css({
+            "background-image": "var(--boardBlue)"});
+        $("#panel_Div").css({
+            "background-image": "var(--boardBlue)"});
+        boardColorOn = true;
+    }
+}
+
+$('#boardColor_Div').mousedown(function(){
+    $(this).css({'scale': '1', 'box-shadow': '0 0 10px cyan inset'});   
+})
+$('#boardColor_Div').mouseup(function(){
+    $(this).css({'scale': '1.02', 'box-shadow': 'none'});
+})
+
 //....................................................TURN GRID LINES OFF/ON
-let gridLinesOn = true;
 function turnGrLnsOnOff(){
     if(gridLinesOn === true){
-        removeGridLines(0);
+        SIZE_BORDER = 0;
+        removeGridLines();
         $('#gridLinesOn-Off').text("OFF");
         $('#gridLinesOn-Off').css("color", "red");
         gridLinesOn = false;
     }else{
-        removeGridLines(1);
+        SIZE_BORDER = 1;
+        removeGridLines();
         $('#gridLinesOn-Off').text("On");
         $('#gridLinesOn-Off').css("color", "greenyellow");
         gridLinesOn = true;
     }
 }
 
-function removeGridLines(x){
-    SIZE_BORDER = x;
+function removeGridLines(){
     SIZE_SQUARE_X = PANEL_WIDTH/SIZE_BOARD_X-SIZE_BORDER;
     SIZE_SQUARE_Y = PANEL_HEIGHT/SIZE_BOARD_Y-1;
     $('.divSquare').css({"borderLeft": `solid ${SIZE_BORDER}px ${COLOR_BORDER}`,
@@ -252,6 +296,7 @@ function removeGridLines(x){
 
 //....................................................NAVIGATE BOARD SIZE
 boardSizeSlider.addEventListener('input', changeBoardSize);
+//Please see HTML tools_Div > boardSize_Div that creates slider with type="range";
 
 function changeBoardSize(){
     let sizeValue = boardSizeSlider.value; //RECEIVE NEW SIZE
@@ -262,10 +307,15 @@ function changeBoardSize(){
     createBoard(SIZE_BOARD_X); //RECREATE BOARD ADJUSTED TO NEW SIZE
 }
 
+//....................................................RUBBER
+//Left Blank on purpose to keep track of chapters.
+
+//Please see HTML tools_Div > rubber_Div that executes onclick="setColor('rubber')";
+//Please see function "setColor('rubber')" at chapter "....CHOOSE INK COLOR FUNCTION".
 
 //....................................................CLEAR BOARD
 $('#clearBoard_Div').click(function(){ 
-    $('.divSquare').css("background-color", "var(--boardBlack)");
+    $('.divSquare').css("background-color", "var(--boardBlue)");
 })
 
 //....................................................SOMETHING ELSE

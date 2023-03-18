@@ -5,7 +5,18 @@
 
 :root{
     --headerGreen: rgba(0, 24, 32, 0.98);
-    --boardBlack: rgb(8, 10, 18);
+    --boardBlue: radial-gradient(
+        rgb(4, 9, 40),
+        rgb(8, 18, 80),
+        rgb(8, 18, 80),
+        rgb(16, 36, 120),
+        rgb(16, 36, 120),
+        rgb(16, 36, 240)
+    );
+    --boardBlack: radial-gradient(
+        rgb(0, 5, 30),
+        rgb(0, 5, 30)
+    );
 }
 
 *{
@@ -16,15 +27,12 @@
     font-family: lacquer, 'Times New Roman', Times, serif
 }
 
-
-
 body{
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
 }
 
 #headerTitle{
@@ -49,21 +57,13 @@ main{
 
     #panel_Div{
         display: grid;
-        background-color: var(--boardBlack);      
+        background-image: var(--boardBlue);      
         border-radius: 3%;
         border: solid 2px rgba(0, 255, 255, 0.65);
         box-shadow: 0 0 7.5px 4px royalblue;  
         margin: auto 0;
         user-select: none;
     }
-
-        .paint{
-            background-color: blue;
-        }
-
-        .ghostHover{
-
-        }
 
     #tools_Div{
         color: white;
@@ -105,41 +105,59 @@ main{
             transition: box-shadow 0.15s;
         }
 
-        #inkColor{
-            border: none;
-            border-radius: 15%;
-            width: 25px;
-            height: 20px;
-        }
-         
-        #inkColor::-webkit-color-swatch{
-
-        }
-        #inkColor::-webkit-color-swatch-wrapper{
-            padding: 0; 
-        }
-        
-        #gridLinesOn-Off{
-            color: greenyellow;
-        }
-
-        #boardSize_Div{
-            margin: 15px auto;
-            padding: 5px 2px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            background-image: linear-gradient(
-                rgba(0, 255, 255, 0.01),    
-                rgba(0, 255, 255, 0.18),
-                rgba(0, 255, 255, 0.01),  
-                rgba(0, 255, 255, 0.01)    
-            
-            );
-        }
-            #boardSize_Div > p{
-                margin: 0 auto;
+            #inkColor{
+                border: none;
+                border-radius: 15%;
+                width: 25px;
+                height: 20px;
             }
+            
+            #inkColor::-webkit-color-swatch{
+
+            }
+            #inkColor::-webkit-color-swatch-wrapper{
+                padding: 0; 
+            }
+            
+            #bucket_Div{
+                cursor: alias;
+                opacity: 0.5;
+            }
+
+                #bucket_Div:hover{
+                    background-image: radial-gradient(
+                        rgba(65, 105, 225, 0.12),
+                        rgba(65, 105, 225, 0.44)
+                    );
+                }
+
+            #boardColor_Div{
+                background-image: var(--boardBlue); 
+                border: solid 3px rgba(65, 105, 225, 0.45);
+                padding: 12px 10px;
+            }
+
+            #gridLinesOn-Off{
+                color: greenyellow;
+            }
+
+            #boardSize_Div{
+                margin: 15px auto;
+                padding: 5px 2px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                background-image: linear-gradient(
+                    rgba(0, 255, 255, 0.01),    
+                    rgba(0, 255, 255, 0.18),
+                    rgba(0, 255, 255, 0.01),  
+                    rgba(0, 255, 255, 0.01)        
+                );
+            }
+
+                #boardSize_Div > p{
+                    margin: 0 auto;
+                }
 
                 #boardSizeLabel_text{
                     color: rgb(173, 255, 47);
