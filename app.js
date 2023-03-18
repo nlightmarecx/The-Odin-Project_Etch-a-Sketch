@@ -1,6 +1,8 @@
 const panel_Div = document.getElementById("panel_Div");
 const divSquare = document.getElementsByClassName("divSquare");
 
+const colorGrabber_Div = document.getElementById("colorGrabber_Div");
+
 const boardSizeSlider = document.getElementById("boardSizeSlider");
 const boardSizeLabel_Num = document.getElementById("boardSizeLabel_Num");
 
@@ -33,6 +35,7 @@ const gridLinesOff = document.getElementById("#gridLinesOff");
 let currentInkColor = "#0000ff";
 let gridLinesOn = true;
 let boardColorOn = true;
+
 
 //......................Canvas Panel..............................
 //....................................................MAKE BOARD DIVs
@@ -227,6 +230,18 @@ function changeInkColor(e){
 //....................................................RAINBOW COLOR
 
 
+
+//....................................................EYEDROPPER
+let eyeDropper = new EyeDropper();
+let grabbedColor = " ";
+
+colorGrabber_Div.addEventListener('click', getEyeDropColor);
+
+async function getEyeDropColor() {
+    let color = await eyeDropper.open();
+    grabbedColor = color.sRGBHex;
+    currentInkColor = grabbedColor;
+}
 
 //....................................................BUCKET
 $('#bucket_Div').mousedown(function(){

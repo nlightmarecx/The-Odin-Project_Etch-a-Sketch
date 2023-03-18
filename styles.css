@@ -119,6 +119,18 @@ main{
                 padding: 0; 
             }
             
+            .toolImg_Div{
+                width: 20px;
+                height: 20px;
+                align-content: center;
+            }
+
+                .toolImg{
+                    padding: auto 0;
+                    width: 18px;
+                    height: 18px;
+                }
+
             #bucket_Div{
                 cursor: alias;
                 opacity: 0.5;
