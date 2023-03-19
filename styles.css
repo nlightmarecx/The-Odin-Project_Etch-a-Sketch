@@ -37,16 +37,16 @@ body{
 
 #headerTitle{
     color: var(--headerGreen);
-    font-size: 58px;
+    font-size: 54px;
     font-weight: bold;
     text-shadow: 0 0 1px cyan, 0 0 22px royalblue;
     text-align: center;
-    margin: 40px auto 65px auto;
+    margin: 30px auto 50px auto;
     user-select: none;
 }
 
 main{
-    width: 700px;
+    width: 620px;
     margin: 0 auto;
 }
 
@@ -67,7 +67,7 @@ main{
 
     #tools_Div{
         color: white;
-        font-size: 16px;
+        font-size: 14px;
         background-image: radial-gradient(
             rgba(0, 255, 255, 0.1),
             rgba(65, 155, 255, 0.4)
