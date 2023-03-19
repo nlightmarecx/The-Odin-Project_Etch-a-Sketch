@@ -1,4 +1,4 @@
-const panel_Div = document.getElementById("panel_Div");
+const board_Div = document.getElementById("board_Div");
 const divSquare = document.getElementsByClassName("divSquare");
 
 const colorGrabber_Div = document.getElementById("colorGrabber_Div");
@@ -7,12 +7,12 @@ const boardSizeSlider = document.getElementById("boardSizeSlider");
 const boardSizeLabel_Num = document.getElementById("boardSizeLabel_Num");
 
 
-const PANEL_WIDTH = 300;
-const PANEL_HEIGHT = PANEL_WIDTH*2 // /1.5; make 3x4 board
+const BOARD_WIDTH = 300;
+const BOARD_HEIGHT = BOARD_WIDTH*2 // /1.5; make 3x4 board
 
-const panelWidth = document.getElementById("panel_Div").style.width = PANEL_WIDTH+"px";
-const panelHeight = document.getElementById("panel_Div").style.height = PANEL_HEIGHT+"px";
-const toolsWidth = document.getElementById("tools_Div").style.width = PANEL_WIDTH/1.6+"px";
+const boardWidth = document.getElementById("board_Div").style.width = BOARD_WIDTH+"px";
+const boardHeight = document.getElementById("board_Div").style.height = BOARD_HEIGHT+"px";
+const toolsWidth = document.getElementById("tools_Div").style.width = BOARD_WIDTH/1.6+"px";
 
 
 let SIZE_BOARD_X = boardSizeSlider.value;
@@ -21,10 +21,10 @@ let SIZE_BOARD_Y = SIZE_BOARD_X*2;
 let COLOR_BORDER = "rgba(211, 211, 211, 0.25)";
 let SIZE_BORDER = 1;
 
-let SIZE_SQUARE_X = PANEL_WIDTH/SIZE_BOARD_X-SIZE_BORDER;
-let SIZE_SQUARE_Y = PANEL_HEIGHT/SIZE_BOARD_Y-SIZE_BORDER;
+let SIZE_SQUARE_X = BOARD_WIDTH/SIZE_BOARD_X-SIZE_BORDER;
+let SIZE_SQUARE_Y = BOARD_HEIGHT/SIZE_BOARD_Y-SIZE_BORDER;
 
-//END OF Panel DIV
+//END OF Board DIV
 //................................................
 
 //................................................
@@ -37,7 +37,7 @@ let gridLinesOn = true;
 let boardColorOn = true;
 
 
-//......................Canvas Panel..............................
+//......................Board Div..............................
 //....................................................MAKE BOARD DIVs
 //changeBoardSize();
 createBoard(SIZE_BOARD_X);
@@ -45,14 +45,14 @@ createBoard(SIZE_BOARD_X);
 function createBoard(size){
     SIZE_BOARD_Y = size*2;
 
-    panel_Div.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    panel_Div.style.gridTemplateRows = `repeat(${SIZE_BOARD_Y}, 1fr)`;
+    board_Div.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    board_Div.style.gridTemplateRows = `repeat(${SIZE_BOARD_Y}, 1fr)`;
 
     for(let i=0; i<size*SIZE_BOARD_Y; i++){
         const divSquare = document.createElement("div");
         divSquare.setAttribute("id", "divSquare"+i)
         divSquare.setAttribute("class", "divSquare");
-        panel_Div.insertAdjacentElement("beforeend", divSquare);
+        board_Div.insertAdjacentElement("beforeend", divSquare);
         divSquare.addEventListener('mouseover', colorDiv);
     }
     removeGridLines();
@@ -87,13 +87,13 @@ $('.divSquare').on({
 */
 
 /*
-panel_Div.addEventListener('mousedown', function(){
+board_Div.addEventListener('mousedown', function(){
     $('.divSquare').hover(function(){
         //$(this).addClass('paint');
         $(this).css("background-color", currentInkColor);
     });
 });
-panel_Div.addEventListener('mouseup', function(){
+board_Div.addEventListener('mouseup', function(){
     $('.divSquare').hover(function(){
         //$(this).addClass('paint');
         $(this).css("background-color", "red");
@@ -101,13 +101,13 @@ panel_Div.addEventListener('mouseup', function(){
 });
 */
 /*
-panel_Div.addEventListener('mousedown', function(){
+board_Div.addEventListener('mousedown', function(){
     $('.divSquare').hover(function(e){
         let squareBox = e.target;
         squareBox.style.backgroundColor = currentInkColor;
     });
 });
-panel_Div.addEventListener('mouseup', function(){
+board_Div.addEventListener('mouseup', function(){
     $('.divSquare').hover(function(e){
         let squareBox = e.target;
         squareBox.style.backgroundColor = "brown";
@@ -116,7 +116,7 @@ panel_Div.addEventListener('mouseup', function(){
 */
 /*
 let mouseIsUp = true;
-panel_Div.addEventListener('mousedown', booleanOff);
+board_Div.addEventListener('mousedown', booleanOff);
 function booleanOff(e){
     let squareBox = e.target;
     mouseIsUp = false;  
@@ -125,7 +125,7 @@ function booleanOff(e){
     squareBox.style.backgroundColor = "green";
     console.log(squareBox)
 }
-panel_Div.addEventListener('mouseup', booleanOn);
+board_Div.addEventListener('mouseup', booleanOn);
 function booleanOn(){
     mouseIsUp = true; 
     $('h1').css("background-color", "red");
@@ -162,8 +162,8 @@ function ghostHover(e){
     e.target.classList.add('hover');
     e.target.addEventListener('transitionend',() => e.target.classList.remove('hover'));
 }
-$('#panel_Div').mouseenter(function(){
-    $('#panel_Div').css("cursor", "none");
+$('#board_Div').mouseenter(function(){
+    $('#board_Div').css("cursor", "none");
 }) 
 */
 
@@ -269,15 +269,15 @@ function changeBoardColor(){
     if(boardColorOn === true){
         $("#boardColor_Div").css({
             "background-image": "var(--boardBlack)"});
-        $("#panel_Div").css({
+        $("#board_Div").css({
             "background-image": "none"});
-        $("#panel_Div").css({
+        $("#board_Div").css({
             "background-color": "rgb(0, 10, 15)"});
         boardColorOn = false;
     }else{
         $("#boardColor_Div").css({
             "background-image": "var(--boardBlue)"});
-        $("#panel_Div").css({
+        $("#board_Div").css({
             "background-image": "var(--boardBlue)"});
         boardColorOn = true;
     }
@@ -308,8 +308,8 @@ function turnGrLnsOnOff(){
 }
 
 function removeGridLines(){
-    SIZE_SQUARE_X = PANEL_WIDTH/SIZE_BOARD_X-SIZE_BORDER;
-    SIZE_SQUARE_Y = PANEL_HEIGHT/SIZE_BOARD_Y-1;
+    SIZE_SQUARE_X = BOARD_WIDTH/SIZE_BOARD_X-SIZE_BORDER;
+    SIZE_SQUARE_Y = BOARD_HEIGHT/SIZE_BOARD_Y-1;
     $('.divSquare').css({"borderLeft": `solid ${SIZE_BORDER}px ${COLOR_BORDER}`,
     "borderTop": `solid ${SIZE_BORDER}px ${COLOR_BORDER}`, "borderRight": "none", "borderBottom": "none"});
     $('.divSquare').css({"height": `${SIZE_SQUARE_X}px`, "width":
@@ -323,7 +323,7 @@ boardSizeSlider.addEventListener('input', changeBoardSize);
 function changeBoardSize(){
     let sizeValue = boardSizeSlider.value; //RECEIVE NEW SIZE
     SIZE_BOARD_X = sizeValue; 
-    panel_Div.innerHTML = ""; //REMOVE EXISTING BOARD
+    board_Div.innerHTML = ""; //REMOVE EXISTING BOARD
     boardSizeLabel_Num.innerHTML = 
     `: ${SIZE_BOARD_X} x ${SIZE_BOARD_X*2}`; //REFLECT UI BOARD SIZE
     createBoard(SIZE_BOARD_X); //RECREATE BOARD ADJUSTED TO NEW SIZE

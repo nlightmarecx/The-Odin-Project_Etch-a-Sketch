@@ -55,7 +55,7 @@ main{
     justify-content: space-around;
 }
 
-    #panel_Div{
+    #board_Div{
         display: grid;
         background-image: var(--boardBlue);      
         border-radius: 3%;
