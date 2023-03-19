@@ -116,7 +116,6 @@ panel_Div.addEventListener('mouseup', function(){
 */
 /*
 let mouseIsUp = true;
-
 panel_Div.addEventListener('mousedown', booleanOff);
 function booleanOff(e){
     let squareBox = e.target;
@@ -126,14 +125,12 @@ function booleanOff(e){
     squareBox.style.backgroundColor = "green";
     console.log(squareBox)
 }
-
 panel_Div.addEventListener('mouseup', booleanOn);
 function booleanOn(){
     mouseIsUp = true; 
     $('h1').css("background-color", "red");
     paint();
 }
-
 function paint(){
     if(mouseIsUp === false){
         $('.divSquare').hover(function(){
@@ -164,9 +161,7 @@ ghostHover();
 function ghostHover(e){
     e.target.classList.add('hover');
     e.target.addEventListener('transitionend',() => e.target.classList.remove('hover'));
-
 }
-
 $('#panel_Div').mouseenter(function(){
     $('#panel_Div').css("cursor", "none");
 }) 
@@ -228,8 +223,15 @@ function changeInkColor(e){
 }
 
 //....................................................RAINBOW COLOR
+//Left Blank on purpose to keep track of chapters.
 
+//Please see HTML tools_Div > rainbow_Div that executes onclick="setColor('rubber')";
+//Please see function "setColor('rainbow')" at chapter "....CHOOSE INK COLOR FUNCTION".
 
+//....................................................EYEDROPPER
+//Neutralize Bucket hover css
+neutralizeBtnHover('#invert_Div'); 
+//Please go to ....BUCKET chapt to see neutralizeBtnHover function.
 
 //....................................................EYEDROPPER
 let eyeDropper = new EyeDropper();
@@ -244,18 +246,23 @@ async function getEyeDropColor() {
 }
 
 //....................................................BUCKET
-$('#bucket_Div').mousedown(function(){
-    $(this).css({'scale': '1', 'box-shadow': 'none'});   
-})
-$('#bucket_Div').mouseup(function(){
-    $(this).css({'scale': '1', 'box-shadow': 'none'});
-})
-$('#bucket_Div').mouseenter(function(){
-    $(this).css({'scale': '1', 'box-shadow': 'none'});
-})
-$('#bucket_Div').mouseleave(function(){
-    $(this).css({'scale': '1', 'box-shadow': 'none'});
-})
+//Neutralize Bucket hover css
+neutralizeBtnHover('#bucket_Div')
+
+function neutralizeBtnHover(btn){
+    $(btn).mousedown(function(){
+        $(this).css({'scale': '1', 'box-shadow': 'none'});   
+    })
+    $(btn).mouseup(function(){
+        $(this).css({'scale': '1', 'box-shadow': 'none'});
+    })
+    $(btn).mouseenter(function(){
+        $(this).css({'scale': '1', 'box-shadow': 'none'});
+    })
+    $(btn).mouseleave(function(){
+        $(this).css({'scale': '1', 'box-shadow': 'none'});
+    })
+}
 
 //....................................................CHANGE BOARD COLOR
 function changeBoardColor(){

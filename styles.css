@@ -131,12 +131,12 @@ main{
                     height: 18px;
                 }
 
-            #bucket_Div{
+                #invert_Div, #bucket_Div{
                 cursor: alias;
                 opacity: 0.5;
             }
 
-                #bucket_Div:hover{
+                #invert_Div, #bucket_Div:hover{
                     background-image: radial-gradient(
                         rgba(65, 105, 225, 0.12),
                         rgba(65, 105, 225, 0.44)
