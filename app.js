@@ -1,6 +1,7 @@
 const board_Div = document.getElementById("board_Div");
 const divSquare = document.getElementsByClassName("divSquare");
 
+const mainColors_Container = document.getElementById("mainColors_Container");
 const colorGrabber_Div = document.getElementById("colorGrabber_Div");
 
 const boardSizeSlider = document.getElementById("boardSizeSlider");
@@ -31,6 +32,11 @@ let SIZE_SQUARE_Y = BOARD_HEIGHT/SIZE_BOARD_Y-SIZE_BORDER;
 //START OF TOOLS DIV
 const inkColor = document.getElementById("inkColor");
 const gridLinesOff = document.getElementById("#gridLinesOff");
+
+const mainColorsArray = [
+    "grey", "brown", "orange", "green", "blue", "purple",
+    "white", "red", "yellow", "greenyellow", "cyan", "pink"
+];
 
 let currentInkColor = "#0000ff";
 let gridLinesOn = true;
@@ -189,8 +195,32 @@ $('.tools').mouseleave(function(){
     $(this).css({'scale': '1', 'box-shadow': 'none'});
 })
 
+//....................................................MAIN COLORS
+createMainColorBoxes();
+function createMainColorBoxes(){
+    mainColors_Container.style.gridTemplateColumns = `repeat(6, 1fr)`;
+    mainColors_Container.style.gridTemplateRows = `repeat(2, 1fr)`;
+
+    for(let i=0; i<12; i++){
+        const mainColorBox = document.createElement("div");
+        mainColorBox.setAttribute("id", "colorBox"+i)
+        mainColorBox.setAttribute("class", "mainColorBox");
+        mainColors_Container.insertAdjacentElement("beforeend", mainColorBox);
+        $("#colorBox" + i).css("background-color", `${mainColorsArray[i]}`)
+        mainColorBox.addEventListener('click', function(){
+            $(".mainColorBox").css({"border": `outset 1px whitesmoke`})
+            mainColorInk = mainColorsArray[i];
+            $("#colorBox" + i).css({"border": `inset 2px ${mainColorsArray[i]}`});
+        });
+    }
+}
+
+neutralizeBtnHover('#mainColors_Container'); 
+
+
 //....................................................CHOOSE INK COLOR FUNCTION
 let initialInk = "#0000ff";
+let mainColorInk = " ";
 let rubberInk = "var(--boardBlue)";
 
 function colorDiv(){
@@ -200,6 +230,9 @@ function colorDiv(){
     }
     if(currentInkColor === 'rubber'){
         $(this).css("background-color", rubberInk)
+    }
+    if(currentInkColor === 'mainColor'){
+        $(this).css("background-color", mainColorInk)
     }
     if(currentInkColor === 'initialInk'){
         $(this).css("background-color", initialInk)

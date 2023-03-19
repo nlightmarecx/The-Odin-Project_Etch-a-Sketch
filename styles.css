@@ -56,13 +56,13 @@ main{
 }
 
     #board_Div{
-        display: grid;
         background-image: var(--boardBlue);      
         border-radius: 3%;
         border: solid 2px rgba(0, 255, 255, 0.65);
         box-shadow: 0 0 7.5px 4px royalblue;  
         margin: auto 0;
         user-select: none;
+        display: grid;
     }
 
     #tools_Div{
@@ -105,6 +105,29 @@ main{
             transition: box-shadow 0.15s;
         }
 
+            #mainColors_Container{
+                border-top: solid 2px whitesmoke;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                margin-top: -5px;
+                display: grid;
+                cursor: alias;
+            }
+
+                .mainColorBox{
+                    height: 20px;
+                    width: 20px;
+                    border: outset 1px whitesmoke;
+                    margin: 3px;
+                }
+
+                .mainColorBox:hover{
+                    cursor: pointer; 
+                    border: inset 2px rgba(128, 128, 128, 0.75);
+                    scale: 1.02;
+                    transition: box-shadow 0.15s;
+                 }
+
             #inkColor{
                 border: none;
                 border-radius: 15%;
@@ -120,23 +143,26 @@ main{
             }
             
             .toolImg_Div{
-                width: 20px;
-                height: 20px;
+                margin-left: -10px;
+                margin-bottom: -2px;
+                width: 17px;
+                height: 17px;
                 align-content: center;
             }
 
                 .toolImg{
                     padding: auto 0;
-                    width: 18px;
-                    height: 18px;
+                    width: 17px;
+                    height: 17px;
                 }
 
-                #invert_Div, #bucket_Div{
+            #invert_Div, #bucket_Div{
                 cursor: alias;
                 opacity: 0.5;
             }
 
-                #invert_Div, #bucket_Div:hover{
+                #mainColors_Container, #invert_Div, 
+                #bucket_Div:hover{
                     background-image: radial-gradient(
                         rgba(65, 105, 225, 0.12),
                         rgba(65, 105, 225, 0.44)
