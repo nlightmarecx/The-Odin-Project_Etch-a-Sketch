@@ -105,13 +105,17 @@ main{
             transition: box-shadow 0.15s;
         }
 
+            .containerHolder{
+                transition: 4s;
+            }
+
             #mainColors_Container{
                 border-top: solid 2px whitesmoke;
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
                 margin-top: -5px;
-                display: grid;
                 cursor: alias;
+                display: grid;
             }
 
                 .mainColorBox{
@@ -128,17 +132,18 @@ main{
                     transition: box-shadow 0.15s;
                  }
 
-            #inkColor{
+            #paletteInk{
                 border: none;
                 border-radius: 15%;
-                width: 25px;
-                height: 20px;
+                width: 20px;
+                height: 18px;
+                margin-left: -10px;
             }
             
-            #inkColor::-webkit-color-swatch{
+            #paletteInk::-webkit-color-swatch{
 
             }
-            #inkColor::-webkit-color-swatch-wrapper{
+            #paletteInk::-webkit-color-swatch-wrapper{
                 padding: 0; 
             }
             

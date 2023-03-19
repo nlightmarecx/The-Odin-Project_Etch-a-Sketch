@@ -25,12 +25,12 @@ let SIZE_BORDER = 1;
 let SIZE_SQUARE_X = BOARD_WIDTH/SIZE_BOARD_X-SIZE_BORDER;
 let SIZE_SQUARE_Y = BOARD_HEIGHT/SIZE_BOARD_Y-SIZE_BORDER;
 
-//END OF Board DIV
+//END OF BOARD DIV
 //................................................
 
 //................................................
 //START OF TOOLS DIV
-const inkColor = document.getElementById("inkColor");
+const paletteInk = document.getElementById("paletteInk");
 const gridLinesOff = document.getElementById("#gridLinesOff");
 
 const mainColorsArray = [
@@ -196,6 +196,25 @@ $('.tools').mouseleave(function(){
 })
 
 //....................................................MAIN COLORS
+let mainColorContainerOn = false;
+$(".containerHolder").css({"display": "none"});
+
+
+$("#mainColors_Div").click(function(){
+    if(mainColorContainerOn === false){
+        $("#mainColors_Div").css({"border-bottom-left-radius": "0", 
+        "border-bottom-right-radius": "0"});
+        //$(".containerHolder").slideDown(1000);
+        $(".containerHolder").css({"display": ""});
+        mainColorContainerOn = true;
+    }else{
+        $("#mainColors_Div").css({"border-bottom-left-radius": "3px", 
+        "border-bottom-right-radius": "3px"});
+        $(".containerHolder").css({"display": "none"});
+        mainColorContainerOn = false;
+    }
+})
+
 createMainColorBoxes();
 function createMainColorBoxes(){
     mainColors_Container.style.gridTemplateColumns = `repeat(6, 1fr)`;
@@ -217,16 +236,19 @@ function createMainColorBoxes(){
 
 neutralizeBtnHover('#mainColors_Container'); 
 
-
 //....................................................CHOOSE INK COLOR FUNCTION
-let initialInk = "#0000ff";
+let initialInk = "#000000";
 let mainColorInk = " ";
+let grabbedColor = " ";
 let rubberInk = "var(--boardBlue)";
 
 function colorDiv(){
     if(currentInkColor === 'rainbow'){
         $(this).css("background-color", 
         '#' + Math.floor(Math.random()*0xffffff).toString(16));
+    }
+    if(currentInkColor === 'eyeDropColor'){
+        $(this).css("background-color", grabbedColor)
     }
     if(currentInkColor === 'rubber'){
         $(this).css("background-color", rubberInk)
@@ -250,7 +272,7 @@ $('#ink_Div').click(function(){
     });
 })
 
-inkColor.addEventListener('input', changeInkColor);
+paletteInk.addEventListener('input', changeInkColor);
 function changeInkColor(e){
     currentInkColor = e.target.value;
 }
@@ -268,14 +290,14 @@ neutralizeBtnHover('#invert_Div');
 
 //....................................................EYEDROPPER
 let eyeDropper = new EyeDropper();
-let grabbedColor = " ";
+//let grabbedColor = " ";
 
 colorGrabber_Div.addEventListener('click', getEyeDropColor);
 
 async function getEyeDropColor() {
     let color = await eyeDropper.open();
     grabbedColor = color.sRGBHex;
-    currentInkColor = grabbedColor;
+    //currentInkColor = grabbedColor;
 }
 
 //....................................................BUCKET

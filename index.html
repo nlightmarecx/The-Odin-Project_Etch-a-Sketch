@@ -19,33 +19,36 @@
 
             </div>
             <div id="tools_Div">
-                <div id="mainColors_Div" class="tools" onclick="dropMainColorsDiv()">
-                    <p>MAIN COLORS</p>
+                <div id="mainColors_Div" class="tools">
+                    <p>GET MAIN COLOR</p>
                 </div>
-                    <div id="mainColors_Container" class="tools" onclick="setColor('mainColor')">
+                    <div class="containerHolder">
+                        <div id="mainColors_Container" class="tools" onclick="setColor('mainColor')">
     
+                        </div>
                     </div>
 
                 <div id="ink_Div" class="tools" onclick="setColor('initialInk')">
-                    <p id="ink">Ink Color</p>
-                    <input type="color" id="inkColor" class="toolIcon">
+                    <p id="ink">Palette rgb</p>
+                    <input type="color" id="paletteInk" class="toolIcon">
                 </div>
 
                 <div id="rainbow_Div" class="tools" onclick="setColor('rainbow')">
-                    <p id="rainbow">Rainbow Color</p>
+                    <p id="rainbow">Rainbow Ink</p>
+                    <div class="toolImg_Div"><img src="images/rainbow.png" class="toolImg"/></div>
                 </div>
 
                 <div id="invert_Div" class="tools">
-                    <p id="invert">Invert Color</p>
+                    <p id="invert">Invert Ink</p>
+                </div>
+
+                <div id="bucket_Div" class="tools">
+                    <p id="bucket">Bucket</p>
                 </div>
                 
                 <div id="colorGrabber_Div" class="tools" onclick="setColor('eyeDropColor')">
                     <p id="grabber">Eyedropper</p>
                     <div class="toolImg_Div"><img src="images/eyedropper.png" class="toolImg"/></div>
-                </div>
-                
-                <div id="bucket_Div" class="tools">
-                    <p id="bucket">Bucket</p>
                 </div>
 
                 <div id="boardColor_Div" class="tools" onclick="changeBoardColor()">
